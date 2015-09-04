@@ -14,8 +14,9 @@ secondsToWait = 432 # corresponds to 200 tweets per day. Max for the streamys is
 
 currentMessageNumber = 0
 while True:
-    print ("Tweeting:" + messages[currentMessageNumber])
-    twitter.update_status(status=line)
+    thisMessage = messages[currentMessageNumber]
+    print ("Tweeting:" + thisMessage)
+    twitter.update_status(status=thisMessage)
     currentMessageNumber = abs(currentMessageNumber - 1)
     time.sleep(secondsToWait)
     
