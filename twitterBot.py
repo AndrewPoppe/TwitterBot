@@ -13,9 +13,11 @@ messages = ["I voted for #GoodMythicalMorning for the #Streamys!", "I voted for 
 secondsToWait = 432 # corresponds to 200 tweets per day. Max for the streamys is either 100 votes per day total or 100 votes per day per nominee. This will try to vote 100 times per day per the two nominees.
 
 currentMessageNumber = 0
+number = 0
 while True:
-    thisMessage = messages[currentMessageNumber]
-    print ("Tweeting:" + thisMessage)
+    number += currentMessageNumber
+    thisMessage = messages[currentMessageNumber] + ' #' + str(number)
+    print ("Tweeting: " + thisMessage)
     twitter.update_status(status=thisMessage)
     currentMessageNumber = abs(currentMessageNumber - 1)
     time.sleep(secondsToWait)
